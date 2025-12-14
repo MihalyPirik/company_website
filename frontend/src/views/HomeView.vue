@@ -7,16 +7,21 @@ interface ServicePackage {
   tagline: string
   shortDescription: string
   priceRange: string
-  features: string[]
-  ctaLabel: string
-  highlight?: boolean
+  priceHint: string
 
+  recommendedFor: string
+  typicalExample: string
+
+  features: string[]
   deliverables: string[]
   supportAndGuarantee: string[]
   priceDrivers: string[]
   notIncluded: string[]
   addons: string[]
-  exampleSetups?: Array<{ title: string; items: string[] }>
+
+  ctaLabel: string
+  highlight?: boolean
+  highlightNote?: string
 }
 
 interface ProcessStep {
@@ -46,168 +51,173 @@ const packages: ServicePackage[] = [
   {
     id: 'starter',
     name: 'Induló Weboldal',
-    tagline: 'Profi bemutatkozó oldal, ha vállalható online jelenlétet szeretnél.',
+    tagline: 'Profi bemutatkozó oldal, ami érthető, gyors és kapcsolatot hoz.',
     shortDescription:
-      'Ideális, ha most indulsz, vagy a régi honlapod már nem tükrözi, hol tart ma a vállalkozásod. Egyszerű, átlátható, mobilbarát bemutatkozó oldal, ami segít, hogy megtaláljanak és fel is vegyék veled a kapcsolatot.',
+      'Ha most indulsz, vagy a jelenlegi honlapod már nem tükrözi a vállalkozásod szintjét: kapsz egy átlátható, mobilbarát bemutatkozó oldalt, ami segít, hogy megtaláljanak és írjanak / hívjanak.',
     priceRange: 'Irányár: 200 000 – 300 000 Ft',
+    priceHint:
+      'Az ár főleg az oldalak számától, a tartalom mennyiségétől és az űrlapok / extra bekötések összetettségétől függ.',
+
+    recommendedFor:
+      'Ha egy megbízható “névjegy + ajánlat + kapcsolat” jellegű weboldal kell, amin az érdeklődő gyorsan dönt.',
+    typicalExample:
+      'Tipikus példa: szolgáltató oldal 4–5 aloldallal, referenciákkal és erős kapcsolatfelvételi gombokkal.',
+
     features: [
       'Legfeljebb 5 aloldal (Főoldal, Rólam/Rólunk, Szolgáltatások, Referenciák, Kapcsolat)',
-      'Reszponzív, mobilra optimalizált design',
-      'Gyors, kereső- és felhasználóbarát oldalstruktúra',
-      'Alap SEO beállítások (oldalcímek, meta leírások, jól tagolt tartalom)',
-      'Google Analytics / GA4 bekötés (ha szeretnéd)',
-      'Kapcsolat szekció kattintható e-mail címmel és telefonszámmal',
-      'Segítség domain és tárhely választásában és beállításában',
+      'Reszponzív, mobilra optimalizált megjelenés',
+      'Gyors, átlátható oldalstruktúra (látogatónak és keresőnek is)',
+      'Alap keresőoptimalizálási beállítások (oldalcímek, leírások, jól tagolt tartalom)',
+      'Kapcsolat szekció: kattintható e-mail és telefonszám',
+      'Szerkesztőfelület nélkül (módosítás eseti kérésre vagy karbantartással)',
+      'Segítség domain, tárhely és SSL kiválasztásában és beállításában',
     ],
     deliverables: [
       'Oldaltérkép + javasolt struktúra (mi hova kerüljön)',
       '1 design irány + 2 kör módosítás',
       'Tartalomfeltöltés a megadott anyagokból (szöveg/képek)',
-      'Kapcsolati CTA-k és átlátható “következő lépés” a látogatónak',
-      'Élesítés (publikálás) + technikai beállítások támogatása',
+      'Kapcsolatfelvételre ösztönző elemek (gombok, “következő lépés” a látogatónak)',
+      'Élesítés (közzététel) + technikai beállítások támogatása',
     ],
     supportAndGuarantee: [
-      'Átadáskor rövid betanítás (tartalom frissítés alapjai, ha szükséges)',
       'Élesítés után 30 nap hibajavítás',
-      'Konzultáció után írásos összefoglaló + javasolt csomag',
+      'Konzultáció után rövid írásos összefoglaló + javasolt csomag',
     ],
     priceDrivers: [
-      'Oldalak száma és tartalom mennyisége',
-      'Egyedi design igény (komplexebb UI elemek)',
-      'Űrlapok bonyolultsága (mezők, logika, értesítések)',
-      'Extra integrációk (tracking, hírlevél, stb.)',
+      'Oldalak száma és a tartalom mennyisége',
+      'Egyedi megjelenés igénye (különleges elemek, animációk, egyedi blokkok)',
+      'Űrlap bonyolultsága (mezők száma, logika, értesítések)',
+      'Külső szolgáltatások bekötése (hírlevél, statisztika, hirdetésmérés)',
     ],
     notIncluded: [
-      'Szövegírás (opcionális extra)',
-      'Többnyelvűség (opcionális extra)',
-      'Foglaló/fizetés/számlázó integráció (opcionális extra)',
-      'Ajánlatkérő űrlapok (opcionális extra)',
-      'Jogi szövegek elkészítése (technikai oldalról segítek, de jogi tartalmat nem írok)',
+      'Online foglalás / fizetés / számlázás bekötése',
+      'Összetett ajánlatkérő űrlap (több lépés, fájlfeltöltés, feltételek)',
+      'Többnyelvűség',
+      'Szövegírás (ha nincs kész anyagod)',
+      'Jogi szövegek elkészítése (technikai beépítésben segítek, de jogi tartalmat nem írok)',
     ],
     addons: [
-      'Szövegírás / UX szöveg finomhangolás',
-      'Cookie banner + tracking consent (technikai implementáció)',
-      'Hírlevél integráció (pl. MailerLite, Brevo)',
-      'Alap arculati frissítés (színek, tipó, UI irány)',
+      'Szövegírás / szövegek átnézése és finomhangolása',
+      'Cookie banner (süti értesítés) + mérőkódok hozzájáruláshoz kötése',
+      'Statisztika bekötés (GA4) + alap mérés beállítása',
+      'Hírlevél feliratkozás bekötése (pl. Brevo)',
+      'Alap arculati frissítés (színek, betűk, egységes vizuális irány)',
     ],
-    ctaLabel: 'Ajánlatot kérek erre a csomagra',
+    ctaLabel: 'Kérek csomagjavaslatot',
   },
   {
     id: 'business',
     name: 'Üzleti Weboldal',
-    tagline: 'Dinamikus, admin felülettel ellátott weboldal, hogy te is tudj tartalmat frissíteni.',
+    tagline: 'Tartalomkezelős weboldal belépéssel, hogy te is tudj frissíteni.',
     shortDescription:
-      'Ha nem elég egy statikus bemutatkozó oldal, saját admin felületen keresztül frissítheted a tartalmaidat. Cél: több érdeklődő, több ajánlatkérés, és kevesebb “kézi munka” az üzemeltetésben.',
+      'Ha rendszeresen változik a tartalom (blog, hírek, referenciák, csapat): kapsz egy kezelőfelületet, ahol belépés után te is tudod frissíteni, amit kell — biztonságosan és érthetően.',
     priceRange: 'Irányár: 450 000 – 900 000 Ft',
+    priceHint:
+      'Az ár a tartalomtípusok számától (pl. blog + referenciák), az űrlapok logikájától és a bekötésektől függ.',
+
+    recommendedFor:
+      'Ha szeretnél belépni egy admin felületre, és saját magad frissítenéd a tartalmakat (poszt, referencia, csapattag).',
+    typicalExample:
+      'Tipikus példa: blog + referenciák kezelése, ajánlatkérő űrlap e-mail értesítéssel, alap mérőkódok bekötésével.',
+
     features: [
       'Minden, ami az Induló Weboldal csomagban',
-      'Egyedi admin felület (blog, hírek, referenciák, csapattagok kezelése)',
+      'Egyedi kezelőfelület (blog, hírek, referenciák, csapattagok kezelése)',
+      'Admin belépés + jelszócsere / jelszóemlékeztető',
+      'Szerepkörök (ki mit szerkeszthet: admin / szerkesztő)',
       'Összetettebb ajánlatkérő űrlapok',
-      'Egyszerű felhasználói fiókok (regisztráció, bejelentkezés, jelszóemlékeztető)',
       'E-mail értesítések (új üzenet / ajánlatkérés esetén)',
-      'Integrációk (hírlevél, Facebook pixel, egyéb tracking kódok)',
+      'Kapcsolódások külső szolgáltatásokhoz (hírlevél, statisztika, hirdetésmérés)',
     ],
-
     deliverables: [
-      'Admin felület + jogosultságok (ki mit szerkeszthet)',
+      'Kezelőfelület belépéssel + alap szerepkörök (admin / szerkesztő)',
       'Tartalomtípusok beállítása (pl. blog/referenciák/csapat)',
-      'Konzisztens oldal-sablonok (gyors bővíthetőség)',
-      'Automatikus e-mail értesítések és űrlaplogika',
-      'Élesítés + átadás + betanítás (videó/PDF összefoglaló igény szerint)',
+      'Egységes oldalsablonok (könnyű bővíthetőség később)',
+      'Űrlapok és értesítések beállítása (e-mail, logika)',
+      'Élesítés + átadás + betanítás (igény szerint videó vagy PDF útmutató)',
     ],
-
     supportAndGuarantee: [
-      'Átadáskor betanítás + “hogyan frissítsd” gyorsútmutató',
+      'Átadáskor betanítás',
       'Élesítés után 30 nap hibajavítás',
       'Konzultáció után írásos összefoglaló + tételes ajánlat határidővel',
     ],
-
     priceDrivers: [
-      'Tartalomtípusok száma (blog + referenciák + csapat vs csak 1–2 modul)',
+      'Tartalomtípusok száma (pl. csak blog vs blog + referenciák + csapat)',
       'Űrlap logika (feltételek, több lépés, fájl feltöltés)',
-      'Integrációk száma (hírlevél, CRM, pixel, stb.)',
-      'Felhasználói fiókok és jogosultsági szintek (egyszerű vs összetett)',
-      'Egyedi design/komponensek mennyisége',
+      'Külső rendszerek bekötése (hírlevél / ügyfélkezelő / statisztika / hirdetésmérés)',
+      'Szerepkörök/jogosultságok összetettsége (1 admin vs több szerepkör)',
+      'Egyedi megjelenés és egyedi elemek mennyisége',
     ],
-
     notIncluded: [
-      'Komplex foglaló/fizetési folyamat (külön ajánlat)',
-      'Egyedi üzleti logika / “rendszer jellegű” funkciók (inkább webalkalmazás)',
-      'Jogi szövegek elkészítése (technikai implementáció lehetséges)',
+      'Komplex foglalási vagy fizetési folyamat',
+      'Egyedi üzleti logika, “rendszer jellegű” funkciók (inkább webalkalmazás)',
+      'Többnyelvűség (ha sok tartalom van)',
+      'Jogi szövegek elkészítése (technikai beépítés lehetséges)',
     ],
-
     addons: [
       'Többnyelvűség',
-      'CRM integráció (pl. Pipedrive/HubSpot – lehetőségtől függően)',
-      'Automatikus ajánlatkérő routing (kategória alapján külön e-mail címre)',
-      'Esettanulmány modul + SEO fókuszú tartalomsablon',
+      'Ügyfél belépés / regisztráció (ha a látogatóknak is kell fiók)',
+      'Összetett jogosultsági rendszer (több szerepkör, modulonkénti hozzáférés)',
+      'Ügyfélkezelő (CRM) bekötés (lehetőségektől függően)',
+      'Ajánlatkérők automatikus szétosztása (típus alapján más e-mail címre)',
+      'Esettanulmány modul + keresőoptimalizálásra épített tartalomsablon',
     ],
-    exampleSetups: [
-      {
-        title: 'Szolgáltató összeállítás',
-        items: ['Referenciák modul', 'Összetett ajánlatkérő űrlap', 'Mérési kódok (GA4/pixel)'],
-      },
-      {
-        title: 'Szakértő / tanácsadó összeállítás',
-        items: ['Blog modul', 'Hírlevél feliratkozás', 'Lead magnet letöltés (opcionális)'],
-      },
-      {
-        title: 'Céges összeállítás',
-        items: ['Csapat modul', 'Esettanulmányok', 'Karrier/álláshirdetés (opcionális)'],
-      },
-    ],
-    ctaLabel: 'Ajánlatot kérek erre a csomagra',
+    ctaLabel: 'Kérek csomagjavaslatot',
     highlight: true,
+    highlightNote: 'Legnépszerűbb – ha rendszeresen frissítenéd a tartalmaidat belépés után.',
   },
   {
     id: 'custom-app',
     name: 'Egyedi Webalkalmazás',
-    tagline: 'Egyedi rendszer – amikor már nem elég egy honlap.',
+    tagline: 'Egyedi online rendszer – amikor már folyamatokat akarsz automatizálni.',
     shortDescription:
-      'Receptportál, foglalási rendszer, tagsági oldal vagy más, teljesen egyedi logikájú online rendszer. Itt már a működés a lényeg: folyamatok, jogosultságok, integrációk.',
+      'Foglalási rendszer, tagsági felület, belső admin folyamatok vagy egyedi portál. Itt a működés a lényeg: folyamatok, jogosultságok, automatizmusok és külső rendszerek összekötése.',
     priceRange: 'Irányár: 1 000 000 Ft-tól, funkcióktól függően',
+    priceHint:
+      'Az ár főleg a funkciók számától (pl. foglalás/fizetés), a szerepköröktől és az integrációktól (API-k) függ.',
+
+    recommendedFor:
+      'Ha nem csak “honlap” kell, hanem egy rendszer, ami időt spórol és automatizál (pl. foglalás, státuszok, értesítések).',
+    typicalExample:
+      'Tipikus példa: foglalás + admin kezelés + automatikus e-mail értesítések + külső rendszer(ek) bekötése.',
+
     features: [
       'Teljesen egyedi tervezés és fejlesztés',
       'Többféle felhasználói szerepkör és jogosultság',
-      'Komplex funkciók: keresés, szűrés, kedvencek, értékelések, kommentek',
-      'Fejlett admin felület (tartalmak, felhasználók, jogosultságok kezelése)',
-      'Integrációk (e-mail, fizetési rendszerek, egyéb API-k)',
-      'Skálázható, hosszú távon fejleszthető struktúra',
+      'Összetett funkciók (keresés, szűrés, kedvencek, értékelés, kommentek)',
+      'Fejlett kezelőfelület (tartalmak, felhasználók, jogosultságok kezelése)',
+      'Külső rendszerek bekötése (e-mail, fizetés, számlázás, egyéb szolgáltatások)',
+      'Növekedésre felkészített, hosszú távon bővíthető felépítés',
     ],
-
     deliverables: [
-      'Specifikáció + ütemterv mérföldkövekkel (mi mikor készül el)',
-      'Prototípus / UX flow-k (hogyan használják a felhasználók)',
-      'Skálázható architektúra + admin felület',
-      'Integrációk és automatizmusok (e-mail, fizetés, API-k)',
-      'Tesztelés + élesítés + monitorozási alapok beállítása',
+      'Részletes specifikáció + ütemterv mérföldkövekkel (mi mikor készül el)',
+      'Képernyőtervek / felhasználói útvonalak (hogyan használják a rendszeredet)',
+      'Stabil rendszerfelépítés + kezelőfelület',
+      'Kapcsolódások és automatizmusok (értesítések, folyamatok, külső rendszerek)',
+      'Tesztelés + élesítés + alap felügyeleti beállítások',
     ],
-
     supportAndGuarantee: [
-      'Átadáskor betanítás + admin használat',
+      'Átadáskor betanítás + kezelőfelület használata',
       'Élesítés után 30 nap kiemelt hibajavítás',
-      'Opciós havi támogatás (monitoring + fejlesztési keret)',
+      'Opciós havi támogatás (felügyelet + fejlesztési keret)',
     ],
-
     priceDrivers: [
-      'Felhasználói szerepkörök/jogosultságok összetettsége',
-      'Funkciók száma és egyediség (foglalás, fizetés, tagság, stb.)',
-      'Integrációk (külső rendszerek, API-k) mennyisége',
-      'Adatmodell összetettsége (keresés, szűrés, riportok)',
-      'Teljesítmény és skálázási igény (nagy forgalom / sok tartalom)',
+      'Szerepkörök és jogosultságok összetettsége',
+      'Funkciók mennyisége és egyedisége (foglalás, fizetés, tagság, stb.)',
+      'Külső rendszerek száma és bonyolultsága (fizetés/számlázás/e-mail/egyéb)',
+      'Adatkezelés összetettsége (keresés, szűrés, riportok)',
+      'Teljesítményigény (nagy forgalom, sok adat, sok felhasználó)',
     ],
-
     notIncluded: [
-      'Külső szolgáltatók díjai (pl. SMS, e-mail küldő, fizetési gateway)',
-      'Jogi megfelelés szakjogászi oldala (technikai implementációt vállalok)',
-      'Üzemeltetés/hosting költségek (segítek választani, de nem része az árnak)',
+      'Külső szolgáltatók díjai (pl. SMS, e-mail küldő, fizetési szolgáltató)',
+      'Jogi megfelelés szakjogászi oldala (technikai beépítést vállalok)',
+      'Üzemeltetés/hosting költségek (segítünk választani, de nem része az árnak)',
     ],
-
     addons: [
-      'Fizetés + számlázás integráció (Stripe/Barion/Számlázz.hu – lehetőségtől függően)',
-      'Riportok / dashboardok',
+      'Bankkártyás fizetés + számlázás bekötése (pl. Barion/Számlázz.hu)',
+      'Riportok / vezetői összefoglalók (dashboardok)',
       'Automatizmusok (pl. e-mail sorozat, státusz alapú értesítések)',
-      'SLA jellegű üzemeltetés (külön megállapodással)',
+      'Kiemelt üzemeltetés vállalt reakcióidővel (külön megállapodással)',
     ],
     ctaLabel: 'Időpontot kérek konzultációra',
   },
@@ -217,32 +227,32 @@ const processSteps: ProcessStep[] = [
   {
     title: 'Ingyenes konzultáció (online / telefon)',
     description:
-      'Megbeszéljük, mire van szükséged, milyen célokra használnád a weboldalt vagy rendszert, és melyik csomag illik hozzád. A beszélgetés után kapsz egy rövid írásos összefoglalót és javasolt következő lépést.',
+      'Röviden átbeszéljük, mire kell a weboldal/rendszer, mi a cél (ajánlatkérés, foglalás, bemutatkozás), és melyik csomag illik hozzád.',
   },
   {
     title: 'Igényfelmérés & ajánlat',
     description:
-      'Összeírom a funkciókat, oldalakat, egyedi igényeket, majd kapsz egy tételes, érthető ajánlatot határidővel.',
+      'Összeírjuk a funkciókat és a tartalmat, majd kapsz egy tételes, érthető ajánlatot határidővel. Ebben tisztán látszik, mi fér bele és mi nem.',
   },
   {
-    title: 'Tervezés & prototípus',
+    title: 'Tervezés & vázlat',
     description:
-      'Összerakom az oldal / rendszer szerkezetét és layoutját, megmutatom, hogyan fog kinézni és működni.',
+      'Összerakjuk a szerkezetet és a fő blokkokat: mit lát a látogató, hol lesznek a gombok, hogyan lesz könnyű kapcsolatba lépni.',
   },
   {
     title: 'Fejlesztés',
     description:
-      'Elkészítem a webalkalmazás alapját, integrálom a szükséges szolgáltatásokat, majd közösen teszteljük.',
+      'Elkészítjük az oldalt/rendszert, beállítjuk a szükséges technikai részeket, majd közösen végigteszteljük.',
   },
   {
-    title: 'Átadás & betanítás',
+    title: 'Élesítés & átadás',
     description:
-      'Élesítem a weboldalt / rendszert, segítek a technikai beállításokban, és megmutatom az admin felület használatát.',
+      'Közzétesszük az oldalt, és ha van admin felület, megmutatjuk a használatát. Kapsz egy rövid útmutatót is, hogy később se legyen kérdés.',
   },
   {
     title: 'Támogatás & karbantartás (opcionális)',
     description:
-      'Ha szeretnéd, a projekt után is vállalok karbantartást, frissítéseket, kisebb fejlesztéseket havi díjért – tiszta keretekkel (mi fér bele és mi nem).',
+      'Ha szeretnéd, hosszú távon is foglalkozunk vele: frissítések, ellenőrzések, kisebb módosítások.',
   },
 ]
 
@@ -250,44 +260,52 @@ const maintenancePlans: MaintenancePlan[] = [
   {
     id: 'basic-maintenance',
     title: 'Induló / Üzleti Weboldal karbantartás',
-    description:
-      'Ha szeretnéd, hogy a weboldalad biztonságos, gyors és naprakész maradjon, miközben nem kell vele foglalkoznod.',
+    description: 'A cél, hogy a weboldalad gyors, biztonságos és gondozott maradjon.',
     priceRange: 'Irányár: 8 000 – 15 000 Ft / hó-tól',
     items: [
-      'Rendszeres technikai frissítések',
+      'Rendszeres technikai frissítések és ellenőrzések',
       'Biztonsági mentések',
-      'Kisebb módosítások / tartalmi frissítések',
-      'Technikai support e-mailben',
+      'Kisebb tartalmi módosítások (szöveg/kép)',
+      'E-mail support (kiszámítható keretekkel)',
+      'Hiba esetén elsőbbségi kezelés a csomagos ügyfeleknek',
     ],
-
     includedHours: 'Tartalmaz: 1 óra / hó kisebb módosítás',
     responseTime: 'Válaszidő: 1–2 munkanap',
     overage: 'Túllógás: óradíjas elszámolás vagy csomagbővítés',
     scopeNote:
-      '“Kisebb módosítás”: szövegcsere, kép csere, apró elrendezés finomhangolás. Új aloldal / új funkció külön fejlesztés.',
+      '“Kisebb módosítás”: szövegcsere, képcsere, apró elrendezés finomhangolás. Új aloldal / új funkció külön fejlesztés.',
   },
   {
     id: 'app-maintenance',
     title: 'Egyedi Webalkalmazás karbantartás',
     description:
-      'Komplex rendszerek folyamatos karbantartása, biztonsági frissítésekkel és kisebb fejlesztésekkel.',
+      'Komplex rendszerekhez: folyamatos frissítések, alap felügyelet és havi fejlesztési keret, hogy a rendszer stabilan működjön és fejlődjön.',
     priceRange: 'Irányár: 20 000 – 60 000 Ft / hó-tól',
     items: [
       'Rendszeres frissítések, biztonsági javítások',
-      'Monitoring (elérhetőség, hibák)',
-      'Kisebb funkciófejlesztések, finomhangolások',
-      'Technikai support és konzultáció',
+      'Alap monitoring (elérhetőség, hibák)',
+      'Kisebb fejlesztések és finomhangolások a havi keretben',
+      'Technikai támogatás és konzultáció',
     ],
-
-    includedHours: 'Tartalmaz: 2–6 óra / hó fejlesztési keret (csomagtól függ)',
-    responseTime: 'Válaszidő: 24–72 óra (megállapodás szerint)',
+    includedHours: 'Tartalmaz: 2–6 óra / hó fejlesztési keret',
+    responseTime: 'Válaszidő: megállapodás szerint',
     overage: 'Túllógás: priorizált backlog + külön keret vagy óradíj',
     scopeNote:
-      'A keret jellemzően kisebb fejlesztésekre és finomhangolásokra jó; nagyobb modulok külön ütemezéssel készülnek.',
+      'A havi keret kisebb fejlesztésekre és finomhangolásokra ideális; nagyobb modulok külön ütemezéssel készülnek.',
   },
 ]
 
 const faqs: FaqItem[] = [
+  {
+    question: 'Honnan tudom, melyik csomag kell nekem?',
+    answer:
+      'Ha ritkán változik a tartalom és a cél a bemutatkozás + kapcsolatfelvétel, az Induló Weboldal jó választás. Ha rendszeresen frissítenél (blog, referenciák, csapat), akkor az Üzleti Weboldal való neked. Ha folyamatot automatizálsz (foglalás, tagság, ügyfélbelépés, integrációk), akkor Egyedi Webalkalmazásban gondolkodunk.',
+  },
+  {
+    question: 'Mi kell tőlem az induláshoz?',
+    answer:
+      'Elég 5–10 mondat arról, mivel foglalkozol és mi a cél, plusz pár példa weboldal, ami tetszik. Ha van logó, képek, szövegek: szuper. Ha nincs, akkor is el tudunk indulni, és megbeszéljük, mi legyen a következő lépés (pl. szöveg finomhangolás, képek).',
+  },
   {
     question: 'Milyen gyorsan készül el egy weboldal?',
     answer:
@@ -296,12 +314,12 @@ const faqs: FaqItem[] = [
   {
     question: 'Domainem és tárhelyem sincs, ez gond?',
     answer:
-      'Nem gond. Segítek kiválasztani a megfelelő szolgáltatót, és elintézzük a domain, tárhely, SSL és e-mail beállításokat.',
+      'Nem gond. Segítünk kiválasztani a megfelelő szolgáltatót, és elintézzük a domain, tárhely, SSL és e-mail beállításokat.',
   },
   {
     question: 'Tudok részletekben fizetni?',
     answer:
-      'Igen. Általában 30% előleget kérek a szerződéskor, a fennmaradó részt pedig egy vagy két részletben a projekt során.',
+      'Igen. Általában 30% előleget kérünk a szerződéskor, a fennmaradó részt pedig egy vagy két részletben a projekt során.',
   },
   {
     question: 'Kapok számlát?',
@@ -310,12 +328,12 @@ const faqs: FaqItem[] = [
   {
     question: 'Mi van, ha később szeretnék új funkciókat?',
     answer:
-      'A rendszert úgy építem, hogy bővíthető legyen. Ha később új ötleteid vannak, külön fejlesztési ajánlat alapján tovább tudjuk fejleszteni.',
+      'A rendszert úgy építjük, hogy bővíthető legyen. Ha később új ötleteid vannak, külön fejlesztési ajánlat alapján tovább tudjuk fejleszteni.',
   },
   {
     question: 'Én fogom tudni kezelni az admin felületet?',
     answer:
-      'Igen. Átadáskor megmutatom, hogyan tudsz új tartalmat felvinni és módosítani. Ha elakadnál, e-mailben is segítek.',
+      'Igen. Átadáskor megmutatjuk, hogyan tudsz új tartalmat felvinni és módosítani. Ha elakadnál, e-mailben is segítünk.',
   },
   {
     question: 'Mit jelent pontosan a “kisebb módosítás” a karbantartásban?',
@@ -325,17 +343,22 @@ const faqs: FaqItem[] = [
   {
     question: 'Mi a helyzet a GDPR / cookie banner / jogi oldalakkal?',
     answer:
-      'A cookie banner és tracking consent technikai implementációját tudom vállalni. A jogi szövegek (ÁSZF, adatkezelési) elkészítése jogi terület, azt jellemzően ügyvéd írja – ha van szöveged, beépítem.',
+      'A cookie banner (süti értesítés) és a mérőkódok engedélykérése technikailag megoldható: beállítjuk, hogy a mérés (pl. Analytics) csak hozzájárulás után induljon. A jogi szövegek (pl. Adatkezelési tájékoztató, ÁSZF) elkészítése jogi terület, azt jellemzően ügyvéd írja, ha vannak már kész dokumentumaid, beépítjük.',
   },
   {
-    question: 'Miért nem WordPress-t használsz?',
+    question: 'Miért nem WordPress-t használtok?',
     answer:
-      'Modern, egyedi fejlesztésű megoldásokra specializálódtam (Vue3 + Laravel). Ennek előnye, hogy gyors, biztonságos és pontosan a te folyamataidra szabható, különösen egyedi igényeknél. Ha kifejezetten WordPresshez ragaszkodsz, szívesen javaslok WP-s szakembert.',
+      'Modern, egyedi fejlesztésű megoldásokra specializálódtunk. Ennek előnye, hogy gyors, biztonságos és pontosan a te folyamataidra szabható, különösen egyedi igényeknél. Ha kifejezetten WordPresshez ragaszkodsz, szívesen javaslunk WP-s szakembert.',
   },
   {
     question: 'Mi történik, ha valami elromlik a weboldalon?',
     answer:
-      'Élesítés után 30 napig kiemelten segítek a hibajavításban. Havi karbantartással prioritást élvez a hibajavítás; karbantartás nélkül is segítek, eseti díjazással.',
+      'Élesítés után az esetlegesen felmerülő hibákat 30 napig díjmentesen javítjuk. Havi karbantartással prioritást élvez a hibajavítás; karbantartás nélkül is segítünk, ilyenkor eseti díjazással.',
+  },
+  {
+    question: 'Miért jó nekem, ha van nálatok karbantartási csomagom?',
+    answer:
+      'Mert nem neked kell a technikai részével foglalkoznod: a weboldal frissítése, biztonsági mentése és alap ellenőrzése rendszeresen megtörténik. Ha kérsz kisebb módosítást (szöveg- vagy képfrissítés), azt a csomag keretében kiszámíthatóan tudjuk kezelni, és hiba esetén is elsőbbséget kapsz.',
   },
 ]
 
@@ -345,19 +368,23 @@ const packagesSectionRef = ref<HTMLElement | null>(null)
 const contactSectionRef = ref<HTMLElement | null>(null)
 
 function scrollToPackages(): void {
-  if (packagesSectionRef.value) {
-    packagesSectionRef.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  packagesSectionRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 function scrollToContact(): void {
-  if (contactSectionRef.value) {
-    contactSectionRef.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  contactSectionRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 function toggleFaq(index: number): void {
   activeFaqIndex.value = activeFaqIndex.value === index ? null : index
+}
+
+function getQuickFeatures(pkg: ServicePackage): string[] {
+  return pkg.features.slice(0, 4)
+}
+
+function getQuickDeliverables(pkg: ServicePackage): string[] {
+  return pkg.deliverables.slice(0, 3)
 }
 </script>
 
@@ -366,59 +393,57 @@ function toggleFaq(index: number): void {
     <section class="hero">
       <div class="hero__content">
         <h1 class="hero__title">
-          Modern weboldalak és egyedi webalkalmazások
+          Weboldal, ami érdeklődőket hoz
           <span class="hero__title-sub">kis- és középvállalkozásoknak</span>
         </h1>
+
         <p class="hero__subtitle">
-          Induló bemutatkozó oldaltól a vállalati rendszerekig – segítek, hogy ne csak legyen egy
-          weboldalad, hanem működjön is.
+          Induló bemutatkozó oldaltól egyedi rendszerekig, úgy építjük fel, hogy a látogató értse,
+          bízzon benne, és könnyen kapcsolatba lépjen veled.
         </p>
 
         <ul class="hero__trust">
-          <li>Ingyenes, kötetlen első konzultáció</li>
-          <li>Konzultáció után írásos összefoglaló + javasolt csomag</li>
+          <li>Ingyenes 20–30 perces konzultáció</li>
+          <li>Válasz 1 munkanapon belül</li>
           <li>Élesítés után 30 nap hibajavítás</li>
         </ul>
 
         <div class="hero__actions">
-          <button class="btn btn--primary" @click="scrollToPackages">Megnézem a csomagokat</button>
-          <button class="btn btn--secondary" @click="scrollToContact">Ajánlatot kérek</button>
+          <button class="btn btn--primary" @click="scrollToContact">Ajánlatot kérek</button>
+          <button class="btn btn--secondary" @click="scrollToPackages">Csomagok</button>
         </div>
       </div>
     </section>
 
     <section class="section section--light">
       <div class="section__inner">
-        <h2 class="section__title">Kinek fejlesztek?</h2>
+        <h2 class="section__title">Kinek fejlesztünk?</h2>
         <p class="section__lead">
-          Olyan vállalkozásoknak, akik szeretnének online jelenlétet, és
-          <strong>profi, mobilbarát, gyors weboldalt</strong> vagy komolyabb, egyedi rendszert.
+          Olyan vállalkozásoknak, akik nem csak egy “szép oldalt” szeretnének, hanem egy
+          <strong>gyors, érthető és bizalmat építő</strong> weboldalt, ami támogatja az
+          értékesítést.
         </p>
+
         <ul class="pill-list">
           <li class="pill-list__item">Induló és növekvő vállalkozások</li>
           <li class="pill-list__item">Szolgáltatók, szakértők, tanácsadók</li>
-          <li class="pill-list__item">Akik valódi online rendszert szeretnének</li>
+          <li class="pill-list__item">Akik folyamatot is automatizálnának</li>
         </ul>
 
         <div class="not-for">
-          <h3 class="not-for__title">Kinek nem én vagyok a legjobb választás?</h3>
+          <h3 class="not-for__title">Kinek nem mi vagyunk a legjobb választás?</h3>
           <ul class="not-for__list">
-            <li>Ha 2–3 nap alatt egy kész, működő rendszert szeretnél.</li>
-            <li>
-              Ha kizárólag a legolcsóbb megoldás a szempont (inkább website builder lesz a jó).
-            </li>
-            <li>Ha ragaszkodsz a CMS-hez (pl. kizárólag WordPress) – tudok ajánlani mást.</li>
+            <li>Ha 2–3 nap alatt “dobozos” megoldást szeretnél.</li>
+            <li>Ha kizárólag a legolcsóbb opció a szempont (website builder valószínű jobb).</li>
+            <li>Ha ragaszkodsz a CMS-hez (pl. csak WordPress), tudunk ajánlani más szakembert.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section" ref="packagesSectionRef">
+    <section class="section" id="packages-section" ref="packagesSectionRef">
       <div class="section__inner">
         <h2 class="section__title section__title--center">Szolgáltatás csomagok</h2>
-        <p class="section__lead section__lead--center">
-          Válaszd ki, hol tart most a vállalkozásod – a többit megoldom én.
-        </p>
 
         <div class="packages-grid">
           <article
@@ -426,84 +451,102 @@ function toggleFaq(index: number): void {
             :key="pkg.id"
             :class="['package-card', { 'package-card--highlight': pkg.highlight }]"
           >
-            <p v-if="pkg.highlight" class="package-card__badge">Legnépszerűbb</p>
-            <h3 class="package-card__title">{{ pkg.name }}</h3>
-            <p class="package-card__tagline">{{ pkg.tagline }}</p>
+            <div class="package-card__header">
+              <p v-if="pkg.highlight" class="package-card__badge">Legnépszerűbb</p>
+
+              <h3 class="package-card__title">{{ pkg.name }}</h3>
+              <p class="package-card__tagline">{{ pkg.tagline }}</p>
+
+              <p v-if="pkg.highlight && pkg.highlightNote" class="package-card__highlight-note">
+                {{ pkg.highlightNote }}
+              </p>
+            </div>
+
+            <div class="package-card__who">
+              <p class="package-card__who-line">
+                <strong>Kinek ajánljuk:</strong> {{ pkg.recommendedFor }}
+              </p>
+              <p class="package-card__who-line package-card__who-line--muted">
+                {{ pkg.typicalExample }}
+              </p>
+            </div>
+
             <p class="package-card__description">{{ pkg.shortDescription }}</p>
 
-            <ul class="package-card__features">
-              <li v-for="(feature, index) in pkg.features" :key="`${pkg.id}-feature-${index}`">
-                {{ feature }}
-              </li>
-            </ul>
-
-            <div class="package-card__extra">
-              <h4 class="package-card__subtitle">Amit kézhez kapsz</h4>
-              <ul class="package-card__list">
-                <li v-for="(item, index) in pkg.deliverables" :key="`${pkg.id}-del-${index}`">
-                  {{ item }}
+            <div class="package-card__quick">
+              <h4 class="package-card__subtitle">A legfontosabbak</h4>
+              <ul class="package-card__features">
+                <li
+                  v-for="(feature, index) in getQuickFeatures(pkg)"
+                  :key="`${pkg.id}-qf-${index}`"
+                >
+                  {{ feature }}
                 </li>
               </ul>
 
-              <h4 class="package-card__subtitle">Támogatás & garancia</h4>
+              <h4 class="package-card__subtitle">Amit kézhez kapsz</h4>
               <ul class="package-card__list">
                 <li
-                  v-for="(item, index) in pkg.supportAndGuarantee"
-                  :key="`${pkg.id}-sup-${index}`"
+                  v-for="(item, index) in getQuickDeliverables(pkg)"
+                  :key="`${pkg.id}-qd-${index}`"
                 >
                   {{ item }}
                 </li>
               </ul>
+            </div>
 
-              <h4 class="package-card__subtitle">Mi mozgatja az árat?</h4>
-              <ul class="package-card__list">
-                <li v-for="(item, index) in pkg.priceDrivers" :key="`${pkg.id}-drv-${index}`">
-                  {{ item }}
-                </li>
-              </ul>
+            <p class="package-card__price-hint">{{ pkg.priceHint }}</p>
 
-              <div v-if="pkg.exampleSetups?.length" class="package-card__setups">
-                <h4 class="package-card__subtitle">Tipikus összeállítások</h4>
-                <div class="setups-grid">
-                  <div
-                    v-for="(setup, idx) in pkg.exampleSetups"
-                    :key="`${pkg.id}-setup-${idx}`"
-                    class="setup-card"
+            <details class="package-card__details">
+              <summary>Részletek</summary>
+
+              <div class="package-card__details-inner">
+                <h4 class="package-card__subtitle">Mit tartalmaz pontosan?</h4>
+                <ul class="package-card__list">
+                  <li v-for="(item, index) in pkg.features" :key="`${pkg.id}-feat-${index}`">
+                    {{ item }}
+                  </li>
+                </ul>
+
+                <h4 class="package-card__subtitle">Támogatás & garancia</h4>
+                <ul class="package-card__list">
+                  <li
+                    v-for="(item, index) in pkg.supportAndGuarantee"
+                    :key="`${pkg.id}-sup-${index}`"
                   >
-                    <p class="setup-card__title">{{ setup.title }}</p>
-                    <ul class="setup-card__list">
-                      <li v-for="(it, j) in setup.items" :key="`${pkg.id}-setup-${idx}-${j}`">
-                        {{ it }}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                    {{ item }}
+                  </li>
+                </ul>
 
-              <details class="package-card__details">
-                <summary>Mi nincs benne?</summary>
+                <h4 class="package-card__subtitle">Mi mozgatja az árat?</h4>
+                <ul class="package-card__list">
+                  <li v-for="(item, index) in pkg.priceDrivers" :key="`${pkg.id}-drv-${index}`">
+                    {{ item }}
+                  </li>
+                </ul>
+
+                <h4 class="package-card__subtitle">Mikor kell külön ajánlat?</h4>
                 <ul class="package-card__list">
                   <li v-for="(item, index) in pkg.notIncluded" :key="`${pkg.id}-no-${index}`">
                     {{ item }}
                   </li>
                 </ul>
-              </details>
 
-              <details class="package-card__details">
-                <summary>Opcionális extrák</summary>
+                <h4 class="package-card__subtitle">Opcionális extrák</h4>
                 <ul class="package-card__list">
                   <li v-for="(item, index) in pkg.addons" :key="`${pkg.id}-add-${index}`">
                     {{ item }}
                   </li>
                 </ul>
-              </details>
-            </div>
+              </div>
+            </details>
 
             <div class="package-card__footer">
               <p class="package-card__price">{{ pkg.priceRange }}</p>
-              <button class="btn btn--ghost" @click="scrollToContact">
-                {{ pkg.ctaLabel }}
-              </button>
+              <button class="btn btn--ghost" @click="scrollToContact">{{ pkg.ctaLabel }}</button>
+              <p class="package-card__micro">
+                Röviden leírod, mit szeretnél → kapsz csomagjavaslatot és irányárat.
+              </p>
             </div>
           </article>
         </div>
@@ -512,9 +555,10 @@ function toggleFaq(index: number): void {
 
     <section class="section section--light">
       <div class="section__inner">
-        <h2 class="section__title section__title--center">Hogyan dolgozom?</h2>
+        <h2 class="section__title section__title--center">Hogyan dolgozunk?</h2>
         <p class="section__lead section__lead--center">
-          Átlátható, lépésről lépésre haladó folyamatban dolgozom, hogy mindig tudd, hol tartunk.
+          Átlátható folyamat, hogy mindig tudd, hol tartunk, mi a következő lépés, és mi miért
+          készül.
         </p>
 
         <ol class="process-list">
@@ -532,6 +576,17 @@ function toggleFaq(index: number): void {
             </div>
           </li>
         </ol>
+
+        <div class="process-cta">
+          <div class="process-cta__content">
+            <h3 class="process-cta__title">Mi a következő lépés?</h3>
+            <p class="process-cta__text">
+              Küldj 5–10 mondatot arról, mivel foglalkozol és mi a cél — mi pedig visszajelzünk egy
+              csomagjavaslattal és irányárral.
+            </p>
+          </div>
+          <button class="btn btn--primary" @click="scrollToContact">Kérek csomagjavaslatot</button>
+        </div>
       </div>
     </section>
 
@@ -539,7 +594,8 @@ function toggleFaq(index: number): void {
       <div class="section__inner">
         <h2 class="section__title section__title--center">Havi támogatás & karbantartás</h2>
         <p class="section__lead section__lead--center">
-          Ha nem akarsz technikai dolgokkal foglalkozni, vállalom a hosszú távú támogatást is.
+          Akkor éri meg igazán, ha nem akarsz technikai dolgokkal foglalkozni, és hiba esetén gyors
+          segítséget szeretnél.
         </p>
 
         <div class="maintenance-grid">
@@ -600,15 +656,10 @@ function toggleFaq(index: number): void {
         </h2>
         <p class="section__lead section__lead--center section__lead--on-dark">
           Írd le pár mondatban, mivel foglalkozol, és mit szeretnél elérni az új weboldallal vagy
-          webalkalmazással – én pedig visszajelzek egy javasolt csomaggal és irányárral.
+          webalkalmazással, mi pedig visszajelzünk egy javasolt csomaggal és irányárral.
         </p>
 
         <div class="contact-placeholder">
-          <p>
-            Itt lesz az ajánlatkérő űrlapod (név, e-mail, vállalkozás, rövid leírás, költségkeret
-            stb.).
-          </p>
-
           <p>
             <strong
               >Konzultáció után rövid írásos összefoglalót kapsz (csomag + irányár + következő
@@ -618,7 +669,7 @@ function toggleFaq(index: number): void {
 
           <p>
             Addig is elérsz e-mailben:
-            <a href="mailto:info@pelda.hu">info@pelda.hu</a>
+            <a href="mailto:info@weboldalasszisztencia.hu">info@weboldalasszisztencia.hu</a>
           </p>
         </div>
 
@@ -671,14 +722,14 @@ function toggleFaq(index: number): void {
 .hero__subtitle {
   font-size: 1.05rem;
   color: #4b5563;
-  max-width: 640px;
+  max-width: 680px;
   margin-bottom: 1rem;
 }
 
 .hero__trust {
   list-style: disc;
   padding-left: 1.2rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.1rem;
   color: #374151;
   display: flex;
   flex-direction: column;
@@ -689,7 +740,7 @@ function toggleFaq(index: number): void {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.6rem;
 }
 
 .btn {
@@ -776,7 +827,7 @@ function toggleFaq(index: number): void {
   font-size: 1rem;
   color: #4b5563;
   margin-bottom: 1.75rem;
-  max-width: 720px;
+  max-width: 760px;
 }
 
 .section__lead--center {
@@ -823,11 +874,13 @@ function toggleFaq(index: number): void {
   border: 1px solid #e5e7eb;
   background: #f9fafb;
 }
+
 .not-for__title {
   margin: 0 0 0.5rem;
   font-size: 1rem;
   color: #0f172a;
 }
+
 .not-for__list {
   margin: 0;
   padding-left: 1.2rem;
@@ -847,13 +900,13 @@ function toggleFaq(index: number): void {
 .package-card {
   background-color: #ffffff;
   border-radius: 1.25rem;
-  padding: 1.75rem 1.5rem;
+  padding: 1.6rem 1.45rem;
   border: 1px solid #e5e7eb;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .package-card--highlight {
@@ -875,24 +928,65 @@ function toggleFaq(index: number): void {
 }
 
 .package-card__title {
-  font-size: 1.3rem;
-  margin-bottom: 0.15rem;
+  font-size: 1.32rem;
+  margin: 0;
 }
 
 .package-card__tagline {
   font-size: 0.95rem;
   color: #4b5563;
+  margin: 0.15rem 0 0;
+}
+
+.package-card__highlight-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  color: #1d4ed8;
+}
+
+.package-card__who {
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.9rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.package-card__who-line {
+  margin: 0;
+  color: #374151;
+  font-size: 0.92rem;
+}
+
+.package-card__who-line--muted {
+  margin-top: 0.35rem;
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 
 .package-card__description {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: #4b5563;
+  margin: 0;
+}
+
+.package-card__quick {
+  border-top: 1px dashed #e5e7eb;
+  padding-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.package-card__subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #0f172a;
 }
 
 .package-card__features {
   list-style: disc;
   padding-left: 1.2rem;
-  margin: 0.75rem 0 0.75rem;
+  margin: 0.45rem 0 0;
   font-size: 0.9rem;
   color: #374151;
   display: flex;
@@ -900,20 +994,8 @@ function toggleFaq(index: number): void {
   gap: 0.25rem;
 }
 
-.package-card__extra {
-  border-top: 1px dashed #e5e7eb;
-  padding-top: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.package-card__subtitle {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #0f172a;
-}
 .package-card__list {
-  margin: 0;
+  margin: 0.45rem 0 0;
   padding-left: 1.2rem;
   color: #4b5563;
   display: flex;
@@ -921,11 +1003,13 @@ function toggleFaq(index: number): void {
   gap: 0.25rem;
   font-size: 0.9rem;
 }
-.package-card__details summary {
-  cursor: pointer;
-  font-weight: 600;
-  color: #111827;
+
+.package-card__price-hint {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #6b7280;
 }
+
 .package-card__details {
   border: 1px solid #e5e7eb;
   border-radius: 0.9rem;
@@ -933,44 +1017,37 @@ function toggleFaq(index: number): void {
   background: #f9fafb;
 }
 
-.setups-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-.setup-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.9rem;
-  padding: 0.75rem 0.9rem;
-  background: #ffffff;
-}
-.setup-card__title {
-  margin: 0 0 0.4rem;
+.package-card__details summary {
+  cursor: pointer;
   font-weight: 700;
   color: #111827;
-  font-size: 0.9rem;
 }
-.setup-card__list {
-  margin: 0;
-  padding-left: 1.1rem;
-  color: #4b5563;
-  font-size: 0.9rem;
+
+.package-card__details-inner {
+  margin-top: 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.9rem;
 }
 
 .package-card__footer {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.55rem;
 }
 
 .package-card__price {
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 0.98rem;
   color: #111827;
+  margin: 0;
+}
+
+.package-card__micro {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #6b7280;
 }
 
 .process-list {
@@ -998,7 +1075,7 @@ function toggleFaq(index: number): void {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   margin-top: 0.2rem;
 }
@@ -1009,12 +1086,38 @@ function toggleFaq(index: number): void {
 
 .process-list__title {
   font-size: 1rem;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.25rem;
 }
 
 .process-list__description {
   font-size: 0.9rem;
   color: #4b5563;
+  margin: 0;
+}
+
+.process-cta {
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.process-cta__title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.process-cta__text {
+  margin: 0.25rem 0 0;
+  color: #4b5563;
+  font-size: 0.95rem;
+  max-width: 60ch;
 }
 
 .maintenance-grid {
@@ -1034,13 +1137,13 @@ function toggleFaq(index: number): void {
 
 .maintenance-card__title {
   font-size: 1.1rem;
-  margin-bottom: 0.4rem;
+  margin: 0 0 0.4rem;
 }
 
 .maintenance-card__description {
   font-size: 0.9rem;
   color: #4b5563;
-  margin-bottom: 0.7rem;
+  margin: 0 0 0.7rem;
 }
 
 .maintenance-card__items {
@@ -1064,15 +1167,16 @@ function toggleFaq(index: number): void {
   flex-direction: column;
   gap: 0.25rem;
 }
+
 .maintenance-card__scope {
   color: #6b7280;
 }
 
 .maintenance-card__price {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #111827;
-  margin-top: 0.75rem;
+  margin: 0.75rem 0 0;
 }
 
 .faq-list {
@@ -1100,7 +1204,7 @@ function toggleFaq(index: number): void {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
 }
 
@@ -1167,8 +1271,15 @@ function toggleFaq(index: number): void {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .setups-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .process-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .process-cta__content {
+    flex: 1;
   }
 }
 
