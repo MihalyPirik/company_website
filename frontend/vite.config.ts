@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
-  base: '/company-website/', // github miatt
+  base: '/company_website/', // github miatt
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
