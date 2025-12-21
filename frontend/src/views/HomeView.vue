@@ -79,7 +79,7 @@ const packages: ServicePackage[] = [
     highlights: [
       'Minden, ami az Üzleti csomagban',
       'Külső rendszerek összekötése: CRM / számlázás / naptár / hírlevél / fizetés - igény szerint',
-      'Jellemzően 1–2 külső rendszer bekötését tartalmazza. További integrációkra külön ajánlatot adok',
+      'Jellemzően 1-2 külső rendszer bekötését tartalmazza. További integrációkra külön ajánlatot adok',
       'Automatizmusok: értesítések, státuszváltások, alap adatátadás a rendszerek között',
       'Biztonságos bekötések: hozzáférések (API-kulcsok) kezelése',
       'Bővíthető felépítés: későbbi új integrációkhoz előkészítve',
@@ -170,8 +170,8 @@ const faqs: FaqItem[] = [
       'Irányárak. A végső árat a funkciók, integrációk és a tartalom alapján a konzultáció után írásban küldöm.',
   },
   {
-    question: 'Az árak áfásak?',
-    answer: 'Áfamentes egyéni vállalkozóként számlázok, így a megadott árak áfamentesek.',
+    question: 'Az árak áfával értendők?',
+    answer: 'Alanyi adómentes egyéni vállalkozóként számlázok, ezért a megadott árak áfamentesek.',
   },
   {
     question: 'Mit nem tartalmaz az irányár?',
@@ -207,9 +207,9 @@ const faqs: FaqItem[] = [
       'Igen, tudok segíteni finomhangolással / struktúrával. Teljes szövegírás külön megállapodás.',
   },
   {
-    question: 'Mi a helyzet GDPR / cookie bannerrel?',
+    question: 'Mi a helyzet GDPR / sütikezeléssel?',
     answer:
-      'Technikailag megoldható (cookie banner + mérőkódok hozzájáruláshoz kötése). A jogi szövegeket jellemzően ügyvéd készíti.',
+      'Technikailag megoldható (sütik + mérőkódok hozzájáruláshoz kötése). A jogi szövegeket jellemzően ügyvéd készíti.',
   },
   {
     question: 'Mi történik, ha hibát találunk élesítés után?',
