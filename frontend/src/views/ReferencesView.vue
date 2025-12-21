@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-type Tag = 'Weboldal' | 'Admin' | 'Űrlap' | 'Integráció' | 'SEO' | 'Webapp'
+type Tag = 'Weboldal' | 'Admin' | 'Űrlap' | 'Integráció' | 'SEO'
 
 interface ReferenceItem {
   id: string
@@ -10,22 +10,22 @@ interface ReferenceItem {
   tags: Tag[]
   summary: string
   bullets: string[]
-  url: string
+  url?: string
 }
 
 const references = ref<ReferenceItem[]>([
   {
     id: 'habzsolj',
     title: 'habzsolj.hu',
-    subtitle: 'Kipróbált receptek, egyszerűen – egyedi rendszerrel a háttérben',
-    tags: ['Webapp', 'Admin', 'Integráció'],
+    subtitle: 'Kipróbált receptek, egyszerűen - egyedi háttérrendszerrel',
+    tags: ['Weboldal', 'Admin', 'Űrlap', 'SEO'],
     summary:
-      'Receptgyűjtemény, ahol a látogatók kipróbált, jól követhető recepteket találnak egy letisztult felületen. A háttérben felhasználói fiókokkal, saját receptekkel és admin jóváhagyással működő, egyedi fejlesztésű rendszer fut.',
+      'Receptgyűjtemény letisztult felülettel. A háttérben felhasználói fiókok, saját receptek és admin jóváhagyási folyamat működik.',
     bullets: [
-      'Felhasználói regisztráció és bejelentkezés, saját profilkezeléssel',
-      'Saját receptek felvitele, módosítása + admin jóváhagyási folyamat',
+      'Felhasználói regisztráció és bejelentkezés, profilkezeléssel',
+      'Saját receptek felvitele és módosítása + admin jóváhagyás',
       'Admin felület a receptek és kapcsolódó tartalmak kezeléséhez',
-      'Integrációk és mérőkódok bekötése (pl. analitika, külső szolgáltatások)',
+      'Látogatottságmérés (Google Analytics) bekötése',
     ],
     url: 'https://habzsolj.hu',
   },
@@ -36,7 +36,7 @@ const activeTag = ref<Tag | 'Összes'>('Összes')
 const tags = computed<(Tag | 'Összes')[]>(() => {
   const all = new Set<Tag>()
   references.value.forEach((r) => r.tags.forEach((t) => all.add(t)))
-  return ['Összes', ...Array.from(all)]
+  return ['Összes', ...Array.from(all).sort()]
 })
 
 const filtered = computed(() => {
@@ -49,14 +49,11 @@ const filtered = computed(() => {
   <main class="services-page">
     <section class="hero hero--compact">
       <div class="hero__content">
-        <h1 class="hero__title">
-          Referenciák
-          <span class="hero__title-sub">konkrét példa egyedi online megoldásra</span>
-        </h1>
+        <h1 class="hero__title">Referenciák</h1>
         <p class="hero__subtitle">
-          Itt egy olyan projektet mutatunk, ahol egy kipróbált recepteket bemutató oldal mögé
-          építettünk stabil, bővíthető rendszert. Ha megírod a céljaitokat, javaslunk egy csomagot
-          és irányárat.
+          Itt olyan munkákból látsz példákat, ahol a cél a <strong>tiszta kommunikáció</strong>, a
+          <strong>stabil technikai alap</strong> és a <strong>bővíthetőség</strong> volt. Ha leírod,
+          mit szeretnél, javaslok egy csomagot és irányárat.
         </p>
 
         <div class="hero__actions">
@@ -105,6 +102,7 @@ const filtered = computed(() => {
             </ul>
 
             <a
+              v-if="item.url"
               class="btn btn--secondary ref-card__cta"
               :href="item.url"
               target="_blank"

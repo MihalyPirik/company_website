@@ -9,7 +9,7 @@ const navLinks = computed(() => [
   { label: 'Főoldal', to: { path: '/' } },
   { label: 'Szolgáltatások', to: { path: '/', hash: '#packages-section' } },
   { label: 'Referenciák', to: { path: '/referenciak' } },
-  { label: 'Rólunk', to: { path: '/rolunk' } },
+  { label: 'Rólam', to: { path: '/rolam' } },
 ])
 
 const ctaLink = computed(() => ({ path: '/', hash: '#contact-section' }))
@@ -30,8 +30,15 @@ function toggleMobile(): void {
   <header class="site-header">
     <div class="site-header__inner">
       <RouterLink class="site-header__brand" :to="{ path: '/' }">
-        <span class="site-header__brand-mark">●</span>
-        <span class="site-header__brand-text">Weboldal Asszisztencia</span>
+        <img
+          class="site-header__brand-mark"
+          src="/logo.png"
+          alt="PM Webdesign logó"
+          width="28"
+          height="28"
+          loading="eager"
+        />
+        <span class="site-header__brand-text">PM Webdesign</span>
       </RouterLink>
 
       <nav class="site-nav">
@@ -77,4 +84,12 @@ function toggleMobile(): void {
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+.site-header__brand-mark {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: inline-block;
+}
+</style>

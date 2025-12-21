@@ -12,8 +12,8 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: () => import('../views/HomeView.vue') },
 
-    { path: '/rolunk', name: 'about', component: () => import('../views/AboutView.vue') },
-    { path: '/about', redirect: '/rolunk' },
+    { path: '/rolam', name: 'about', component: () => import('../views/AboutView.vue') },
+    { path: '/about', redirect: '/rolam' },
 
     {
       path: '/referenciak',
